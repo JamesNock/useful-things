@@ -1,49 +1,38 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Little Snitch.app/Contents/Components:~/.composer/vendor/bin"
 
 # Path to your oh-my-zsh installation.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="/opt/homebrew/Cellar/mysql@5.7/5.7.34/bin/:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
 
-alias phpstorm='open -a "PHPStorm"'
+alias art="php artisan"
+alias ccca="./craft clear-caches/all"
+alias cgu="composer global update"
+alias cma="./craft migrate/all"
+alias cpca="./craft project-config/apply"
 alias craftpwgen="php ~/Sites/scripts/craftpwgen.php"
-alias ncpca="nitro craft project-config/apply"
-alias nccca="nitro craft clear-caches/all"
-alias updatedb="sudo /usr/libexec/locate.updatedb"
+alias csw="composer install && npm install && cma && cpca"
+alias gaa="git add --all"
+alias gbl="git branch --list"
+alias gc="git commit -m "
+alias gcod="git checkout origin develop"
+alias gcom="git checkout origin master"
+alias gd="git diff"
+alias gfa="git fetch --all"
+alias gr="git remote"
+alias grhh="git reset HARD --head"
+alias gs="git status"
+alias nrd="nvm use && npm run dev"
+alias nrw="nvm use && npm run watch"
+alias phpst='open -a "PHPStorm"'
 alias stree='/Applications/SourceTree.app/Contents/Resources/stree'
-
-# place this after nvm initialization!
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
+alias updatedb="sudo /usr/libexec/locate.updatedb"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -105,22 +94,7 @@ load-nvmrc
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-
-ZSH_THEME="spaceship"
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_GIT_PREFIX=""
-SPACESHIP_GIT_STATUS_SHOW=false
-SPACESHIP_NODE_PREFIX=""
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_PHP_SHOW=false
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_ORDER=(
-	dir
-	node
-	git
-)
-
-plugins=(git zsh-autosuggestions)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -149,3 +123,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/usr/local/sbin:$PATH"
+export PATH=${PATH}:~/.composer/vendor/bin
